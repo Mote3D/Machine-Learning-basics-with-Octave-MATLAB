@@ -1,1 +1,1 @@
-# Machine-Learning-basics-with-Octave/MATLAB
+# Machine Learning basics with Octave/MATLAB
