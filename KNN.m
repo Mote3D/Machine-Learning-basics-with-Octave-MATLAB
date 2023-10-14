@@ -27,3 +27,22 @@ clc;
 
 ## Read dataset from file: 
 data = dlmread("dataset.txt", ",");
+
+## Choose the number of nearest neighbours k:
+k = 3
+
+## Initialize a query point to be classified:
+point = [randi([1,9]),0]
+
+## Compute the Euclidian distance between the query point and each data point of the sample:
+dxdy = repmat(point, size(data)(1), 1) - data
+dist = sqrt(sum(dxdy.*dxdy), 2)
+
+## Add indices to the resulting matrix of distance:
+indexdist = [transpose(1:size(data)(1)),dist];
+
+## Sort the matrix by distances in ascending order and pick first k nearest data points:
+k_nearestdist = sortrows(indexdist, 2)(1:k,:)
+k_nearestdata = data(k_nearestdist(:,1),:)
+
+
